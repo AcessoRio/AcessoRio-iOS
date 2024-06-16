@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		559C39692BE99C9B004A5E86 /* ReportIssueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559C39682BE99C9B004A5E86 /* ReportIssueView.swift */; };
+		970804DB2BFAC8FE00D45AD1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970804DA2BFAC8FE00D45AD1 /* ImagePicker.swift */; };
+		971139CD2BE9AAFE0062FBE8 /* ReportIssueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971139CC2BE9AAFE0062FBE8 /* ReportIssueView.swift */; };
+		971139CF2BEAAB460062FBE8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971139CE2BEAAB460062FBE8 /* LocationManager.swift */; };
+		976D9F442C12872500D6AA74 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976D9F432C12872500D6AA74 /* ViewModel.swift */; };
 		976E777E2BC7154400CA117D /* AcessoRioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E777D2BC7154400CA117D /* AcessoRioApp.swift */; };
 		976E77802BC7154400CA117D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976E777F2BC7154400CA117D /* ContentView.swift */; };
 		976E77822BC7154500CA117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 976E77812BC7154500CA117D /* Assets.xcassets */; };
@@ -17,8 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		559C39682BE99C9B004A5E86 /* ReportIssueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueView.swift; sourceTree = "<group>"; };
-		559C396A2BE9A0CE004A5E86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		970804DA2BFAC8FE00D45AD1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		971139CC2BE9AAFE0062FBE8 /* ReportIssueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportIssueView.swift; sourceTree = "<group>"; };
+		971139CE2BEAAB460062FBE8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		976D9F432C12872500D6AA74 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		976D9F452C128D4500D6AA74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		976E777A2BC7154400CA117D /* AcessoRio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcessoRio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		976E777D2BC7154400CA117D /* AcessoRioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcessoRioApp.swift; sourceTree = "<group>"; };
 		976E777F2BC7154400CA117D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		971139D02BEAAB6D0062FBE8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				971139CE2BEAAB460062FBE8 /* LocationManager.swift */,
+				970804DA2BFAC8FE00D45AD1 /* ImagePicker.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		976E77712BC7154400CA117D = {
 			isa = PBXGroup;
 			children = (
@@ -58,7 +73,8 @@
 		976E777C2BC7154400CA117D /* AcessoRio */ = {
 			isa = PBXGroup;
 			children = (
-				559C396A2BE9A0CE004A5E86 /* Info.plist */,
+				976D9F452C128D4500D6AA74 /* Info.plist */,
+				971139D02BEAAB6D0062FBE8 /* Managers */,
 				976E778D2BC75FEF00CA117D /* View */,
 				976E778C2BC75FE900CA117D /* ViewModel */,
 				976E778B2BC75FE200CA117D /* Model */,
@@ -89,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				976E77922BC7609600CA117D /* AcessibilityIssueVM.swift */,
+				976D9F432C12872500D6AA74 /* ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -96,8 +113,8 @@
 		976E778D2BC75FEF00CA117D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				971139CC2BE9AAFE0062FBE8 /* ReportIssueView.swift */,
 				976E777F2BC7154400CA117D /* ContentView.swift */,
-				559C39682BE99C9B004A5E86 /* ReportIssueView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,8 +191,11 @@
 			files = (
 				976E77802BC7154400CA117D /* ContentView.swift in Sources */,
 				976E77932BC7609600CA117D /* AcessibilityIssueVM.swift in Sources */,
-				559C39692BE99C9B004A5E86 /* ReportIssueView.swift in Sources */,
+				971139CF2BEAAB460062FBE8 /* LocationManager.swift in Sources */,
+				970804DB2BFAC8FE00D45AD1 /* ImagePicker.swift in Sources */,
+				971139CD2BE9AAFE0062FBE8 /* ReportIssueView.swift in Sources */,
 				976E777E2BC7154400CA117D /* AcessoRioApp.swift in Sources */,
+				976D9F442C12872500D6AA74 /* ViewModel.swift in Sources */,
 				976E778F2BC7601400CA117D /* AccessibilityIssue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +334,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AcessoRio/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Registrar locais";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Registrar locais";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Registrar locais";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,7 +347,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "academy.les.inf.puc-rio.br.AcessoRio.AcessoRio";
+				PRODUCT_BUNDLE_IDENTIFIER = "academy.les.inf.puc-rio.br.AcessoRio";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -344,6 +367,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AcessoRio/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Registrar locais";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Registrar locais";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Registrar locais";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -354,7 +380,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "academy.les.inf.puc-rio.br.AcessoRio.AcessoRio";
+				PRODUCT_BUNDLE_IDENTIFIER = "academy.les.inf.puc-rio.br.AcessoRio";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
