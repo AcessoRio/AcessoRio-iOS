@@ -1,10 +1,3 @@
-//
-//  AccessibilityIssue.swift
-//  AcessoRio
-//
-//  Created by Alexandre César Brandão de Andrade on 10/04/24.
-//
-
 import Foundation
 import SwiftUI
 import MapKit
@@ -24,8 +17,7 @@ enum IssueType: String, CaseIterable {
     case fixedObstacles = "Obstáculos Fixos"
 }
 
-
-enum DescriptionType: String, CaseIterable{
+enum DescriptionType: String, CaseIterable {
     case unevenSidewalk = "Calçadas com desníveis, buracos ou superfícies irregulares"
     case noAccessRamp = "Falta de rampas em locais estratégicos"
     case noTactileSignage = "Falta de pisos podotáteis para pessoas com deficiência visual"

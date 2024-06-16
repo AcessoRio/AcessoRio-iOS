@@ -2,82 +2,59 @@ import SwiftUI
 import MapKit
 
 
+import SwiftUI
+import MapKit
+
 struct ContentView: View {
-    @ObservedObject var viewModel = AccessibilityIssuesViewModel()
-
-
-    // Map Information
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: -22.9068, longitude: -43.1729),
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
-
-    @State private var showingBottomSheet = true
+    @StateObject var viewModel = ViewModel()
 
     var body: some View {
-        VStack{
-            MapView(annotations: viewModel.issues.map {
-                AccessibilityAnnotation(type: $0.type, coordinate: $0.location)
-            }, region: $region)
-            .ignoresSafeArea(edges: .top)
-            .sheet(isPresented: $showingBottomSheet) {
-                ScrollView {
-                    issueList
-                }
-                // You may comment out below modifiers for testing
-                .interactiveDismissDisabled()
-                .presentationDetents([.height(50), .medium, .large])
-                .presentationBackgroundInteraction(.enabled(upThrough: .large))
-            }
-            .frame(maxWidth: .infinity)
-            .background(Color.white.cornerRadius(0))
-        }
+        NavigationView {
+            VStack {
+                MapView(annotations: viewModel.images.map {_ in 
+                    AccessibilityAnnotation(type: .unevenSidewalk, coordinate: viewModel.locationManager.lastKnownLocation?.coordinate ?? CLLocationCoordinate2D())
+                }, region: .constant(MKCoordinateRegion(
+                    center: CLLocationCoordinate2D(latitude: -22.9068, longitude: -43.1729),
+                    span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                )))
+                .ignoresSafeArea(edges: .top)
 
-
-    }
-
-    var issueList: some View {
-        VStack{
-            Button(action: {
-                // Action for the button
-            }) {
-                Text("Registrar Problema")
+                Button(action: {
+                    viewModel.showingImagePicker = true
+                }) {
+                    HStack {
+                        Image(systemName: "camera")
+                        Text("Registrar Problema")
+                    }
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .frame(height: 50)
                     .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(10)
-                    .bold()
-            }
-            .padding()
+                    .padding()
+                }
+                .sheet(isPresented: $viewModel.showingImagePicker, onDismiss: viewModel.loadImage) {
+                    ImagePicker(image: $viewModel.inputImage, sourceType: .camera)
+                }
+                .fullScreenCover(isPresented: $viewModel.navigateToReportIssue) {
+                    ReportIssueView(viewModel: viewModel)
+                }
 
-            HStack{
-                Text("Alertas na Região")
-                Spacer()
-            }.padding()
-
-            List {
-                ForEach(IssueType.allCases, id: \.self) { type in
-                    HStack {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .foregroundColor(colorForType(type))
-                        Text(type.rawValue).fontWeight(.medium)
-                        Spacer()
-                        Text("\(viewModel.issues.filter { $0.type == type }.count)")
+                List {
+                    ForEach(IssueType.allCases, id: \.self) { type in
+                        HStack {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundColor(colorForType(type))
+                            Text(type.rawValue)
+                            Spacer()
+                            Text("\(viewModel.images.filter { _ in type == .unevenSidewalk }.count)")
+                        }
                     }
-                    .listRowBackground(Color.white)
-                    .listRowSpacing(50)
                 }
             }
-            .frame(height: 300) // Set an explicit height for the list
-            .background(Color.white)
-            .listStyle(PlainListStyle())
-
+            .navigationTitle("Acesso Rio")
         }
     }
-
-
-
 
     func colorForType(_ type: IssueType) -> Color {
         switch type {
@@ -93,15 +70,16 @@ struct ContentView: View {
     }
 }
 
+
+// The map view implementation in SwiftUI
+
 struct MapView: UIViewRepresentable {
-    var annotations: [AccessibilityAnnotation]
+    var annotations: [MKAnnotation]
     @Binding var region: MKCoordinateRegion
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
-        mapView.showsUserLocation = true  // Mostra a localização do usuário
-        mapView.userTrackingMode = .follow  // Segue a localização do usuário
         return mapView
     }
 
@@ -122,13 +100,12 @@ struct MapView: UIViewRepresentable {
             self.parent = parent
         }
 
-        // Implemente métodos delegate conforme necessário
+        // Add delegate methods if needed
     }
 }
 
 
 
-
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}

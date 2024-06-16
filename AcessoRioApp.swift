@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct AcessoRioApp: App {
+    @StateObject private var viewModel = ViewModel() // Create the ViewModel instance
+
     var body: some Scene {
         WindowGroup {
-            ReportIssueView()
+            ContentView(viewModel: viewModel) // Pass the ViewModel to ContentView
         }
     }
 }
